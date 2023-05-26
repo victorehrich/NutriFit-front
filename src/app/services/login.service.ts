@@ -12,4 +12,7 @@ export class LoginService{
     login(loginInfos:{email:string, password:string}): Observable<string>{
         return this.httpService.post<string>(this.url,loginInfos)
     }
+    recoveryPassword(email:string): Observable<string>{
+        return this.httpService.post<string>(this.url+"recoveryPassword",email)
+    }
 }

@@ -1,7 +1,12 @@
 <div class="login-container">
-    <div class="img-background-container">
+    <div class="img-background-container" [ngClass]="currentPath == '/' ? 'img-login' : 'img-forget-password'">
     </div>
     <div class="side-login">
-        <app-side-login></app-side-login>
+        <div *ngIf="currentPath == '/'">
+            <app-side-login></app-side-login>
+        </div>
+        <div *ngIf="currentPath == '/esqueci-a-senha'">
+            <app-side-forget-password></app-side-forget-password>
+        </div>
     </div>
 </div>

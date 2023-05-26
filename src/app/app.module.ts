@@ -7,13 +7,14 @@ import { LoginComponent } from './pages/login/login.component';
 import { SideLoginComponent } from './components/side-login/side-login.component';
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { SideForgetPasswordComponent } from './components/side-forget-password/side-forget-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SideLoginComponent
+    SideLoginComponent,
+    SideForgetPasswordComponent
   ],
   imports: [
     BrowserModule,
