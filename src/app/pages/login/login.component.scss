@@ -1,0 +1,12 @@
+.login-container{
+    display: grid;
+    grid-template-columns: 75% 25%;
+    height: 100vh;
+}
+.img-background-container{
+    background-image: url("../../../assets/img/login-background.png");
+    background-size: cover;
+}
+.side-login{
+    background-color: #F8A000;
+}

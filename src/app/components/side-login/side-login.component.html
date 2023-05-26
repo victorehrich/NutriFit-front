@@ -1,0 +1,23 @@
+<div class="flex column" [formGroup]="form">
+    <label class="logo">NutriFit</label>
+    <label class="login-txt">Login</label>
+
+    <div id="inputs">
+        <div class="input-icon flex">
+            <img src="../../../assets/icons/Email.svg">
+            <input type="email" placeholder="Email" formControlName="email">
+        </div>
+        <div class="input-icon flex">
+            <img src="../../../assets/icons/PasswordLock.svg">
+            <input [type]="passwordType" placeholder="Senha" formControlName="password">
+            <button (click)="showPassword()"><img id="eye-password" [src]="showIconPath"></button>
+        </div>
+    </div>
+    <div class="login-container">
+        <button (click)="login()" [disabled]="form.invalid">Entrar</button>
+        <div class="flex links-login">
+            <a routerLink="/cadastro">Cadastre-se</a>
+            <a routerLink="/esqueci-a-senha">Esqueci a senha</a>
+        </div>
+    </div>
+</div>
