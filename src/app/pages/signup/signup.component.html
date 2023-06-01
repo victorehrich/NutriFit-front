@@ -58,6 +58,11 @@
                     <button (click)="showPassword('confirmPassword')"><img id="eye-password" [src]="confirmShowIconPath"></button>
                 </div>
             </div>
+            <div *ngIf="(form.controls['confirmPassword'].dirty || form.controls['confirmPassword'].touched)" class="alert">
+                <div *ngIf="form.controls['confirmPassword'].value != form.controls['password'].value" class="form-error">
+                    <p>*Sua senha precisa ser igual a digitada</p>
+              </div>
+            </div>
         </div>
         <div class="default-send-button">
             <button (click)="createUser()" [disabled]="!releaseButton()">Recuperar senha</button>
