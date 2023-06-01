@@ -3,16 +3,16 @@
     margin: 54px 0;
 }
 
-.input-icon {
-    background-color: #EEEEEE;
-    border-radius: 8px;
-    margin-bottom: 24px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-
 .login-txt {
     font-size: 36px;
     margin-bottom: 24px;
+}
+
+.input-icon {
+    background-color: var(--default-white);
+    border-radius: 8px;
+    margin-bottom: 24px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .input-icon img {
@@ -39,8 +39,8 @@
     height: 28px;
 }
 .login-container > button {
-    background-color: #3AB53F;
-    color: #EEEEEE;
+    background-color:  var(--default-green);
+    color: var(--default-white);
     font-size: 24px;
     border: none;
     border-radius: 8px;

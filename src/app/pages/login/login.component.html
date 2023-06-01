@@ -3,7 +3,7 @@
     </div>
     <div class="side-login">
         <div *ngIf="currentPath == '/'">
-            <app-side-login></app-side-login>
+            <app-side-login (redirectToHome)="onRedirectToHome($event)"></app-side-login>
         </div>
         <div *ngIf="currentPath == '/esqueci-a-senha'">
             <app-side-forget-password></app-side-forget-password>

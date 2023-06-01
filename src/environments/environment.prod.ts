@@ -1,5 +1,6 @@
 export const environment = {
     production: true,
     apiKey: 'prodKey',
-    apiURL: 'http://localhost:8082'
+    apiURL: 'https://localhost:44340',
+    apiVersion: 'v1'
   };

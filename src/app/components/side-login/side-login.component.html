@@ -12,6 +12,7 @@
             <input [type]="passwordType" placeholder="Senha" formControlName="password">
             <button (click)="showPassword()"><img id="eye-password" [src]="showIconPath"></button>
         </div>
+        <div *ngIf="erroMsg" class="form-error"><p>*{{erroMsg}}</p></div>
     </div>
     <div class="login-container">
         <button (click)="login()" [disabled]="form.invalid">Entrar</button>

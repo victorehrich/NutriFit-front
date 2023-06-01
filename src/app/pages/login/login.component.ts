@@ -11,5 +11,7 @@ export class LoginComponent {
   constructor (private router:Router) {
     this.currentPath = this.router.url
   }
-
+  onRedirectToHome(event:boolean){
+    if(event) this.router.navigate(['/', 'home'])
+  }
 }
