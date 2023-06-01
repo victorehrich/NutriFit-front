@@ -1,0 +1,70 @@
+.signup-container {
+    background-image: url(../../../assets/img/signup-background.png);
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    justify-content: center;
+}
+
+.form {
+    padding: 52px;
+    border-radius: 12px;
+    background-color: var(--default-orange);
+}
+
+.logo {
+    font-size: var(--logo-size);
+    margin: 18px 0 0 0;
+}
+
+.signup-txt {
+    font-size: 36px;
+    margin-bottom: 24px;
+}
+
+.input-icon {
+    background-color: var(--default-white);
+    border-radius: 8px;
+    margin-bottom: 24px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.input-icon img {
+    padding: 0 12px;
+}
+.input-icon input {
+    background-color: transparent;
+    border: none;
+    width: 300px;
+    height: 48px;
+    font-size: 20px;
+}
+
+.input-icon select{
+    border: none;
+    width: 100%;
+    height: 48px; 
+    font-size: 20px;
+    border-radius: 12px;
+    background-color: var(--default-white);
+}
+.input-icon select:focus-visible,
+.input-icon input:focus-visible {
+    outline: none;
+}
+
+.input-icon button {
+    border: none;
+    border-radius: 12px;
+}
+.grid{
+    display: grid;
+    gap: 12px;
+}
+.column-2{
+    grid-template-columns: 50% 50%;
+}
+
+.column-3{
+    grid-template-columns: 33% 32.5% 33%;
+}
