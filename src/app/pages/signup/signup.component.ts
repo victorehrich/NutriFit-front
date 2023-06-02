@@ -75,7 +75,11 @@ export class SignupComponent {
       delete form.confirmPassword
       const createUser:UserCreateInterface = form
       this.userService.createUser(createUser).subscribe({
-        next:(token:State<UserInterface>)=>{
+        next:(response:State<UserInterface>)=>{
+          if(response.statusCode != 200){
+            this.erroMsg = response.message
+            return
+          }
           this.router.navigate(['/'])
         },
         error:(err:HttpErrorResponse)=>{
