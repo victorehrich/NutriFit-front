@@ -15,12 +15,12 @@ export class SideLoginComponent {
   showIconPath = "../../../assets/icons/PasswordInvisible.svg"
   erroMsg = ""
   @Output() redirectToHome:EventEmitter<boolean> = new EventEmitter()
-  constructor(private formBuilder: FormBuilder,
-    private loginService:LoginService){
+  constructor(
+    private formBuilder: FormBuilder,
+    private loginService:LoginService) {
     this.createForm()
     this.onChanges();
   }
-
   onChanges(): void {
     this.form.valueChanges.subscribe(val => {
       this.erroMsg = ""
@@ -52,11 +52,16 @@ export class SideLoginComponent {
       this.loginService.login(login).subscribe({
         next:(token:LoginResponseInterface)=>{
           localStorage.removeItem("sessionToken")
+          localStorage.removeItem("user")
           localStorage.setItem("sessionToken",JSON.stringify(token.token))
+          let {password ,... user} = token.user
+          localStorage.setItem("user",JSON.stringify(user))
           this.redirectToHome.emit(true);
         },
         error:(err:HttpErrorResponse)=>{
-          this.erroMsg = err.error
+            this.erroMsg = err.error
+            if(err.status == 0)
+              this.erroMsg = "Ops, parece ter acontecido algum erro"
         }
       })
     }
