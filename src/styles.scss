@@ -1,10 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
     --default-orange: #F8A000;
-    --default-green:#3AB53F;
+    --default-green: #3AB53F;
     --default-white: #EEEEEE;
     --default-gray: #797a7d;
-    --logo-size:86px
+    --default-red: #B53838;
+    --logo-size: 86px;
 }
 
 body {
@@ -16,6 +17,12 @@ body {
     font-family: 'Maven Pro', sans-serif;
 }
 
+.grid-body {
+    display: grid;
+    grid-template-columns: 15% 85%;
+    height: 100%;
+    width: 100%;
+}
 
 html,
 body {

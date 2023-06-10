@@ -8,8 +8,12 @@ import { SideLoginComponent } from './components/side-login/side-login.component
 import { HttpClientModule } from "@angular/common/http";
 import { SideForgetPasswordComponent } from './components/side-forget-password/side-forget-password.component';
 import { SignupComponent } from './pages/signup/signup.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { HomeComponent } from './pages/home/home.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { HomeDisplayerComponent } from './components/home-displayer/home-displayer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,10 @@ import { ChangePasswordComponent } from './pages/change-password/change-password
     SideLoginComponent,
     SideForgetPasswordComponent,
     SignupComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    HomeComponent,
+    SidebarComponent,
+    HomeDisplayerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,22 @@
+<div class="sidebar-container flex column" style="justify-content:space-between;">
+    <div class="flex column" style="width: 100%;">
+        <label class="sidebar-logo">
+            NutriFit
+        </label>
+        <div class="flex column" style="width:100%">
+            <div *ngFor="let item of itensSidebar; let i = index" style="width:100%">
+                <a [routerLink]="item.path">
+                    <div class="sidebar-item flex">
+                        <img class="sidebar-icon" [src]="baseIconPath+'/'+item.icon+'.svg'">
+                        <label class="sidebar-label">{{item.label}}</label>
+                    </div>
+                </a>
+                <hr class="sidebar-hr" *ngIf="i != itensSidebar.length - 1">
+            </div>
+        </div>
+    </div>
+    <div class="default-exit-button flex button-red">
+        <img src="../../../assets/icons/leftArrow.svg" alt="leftArrow">
+        <button (click)="logout()">Sair</button>
+    </div>
+</div>
