@@ -9,6 +9,9 @@ import { Validators } from '@angular/forms';
 })
 export class ChangePasswordComponent {
   formChangePassWord!: FormGroup;
+  passwordType = "password"
+  showIconPath = "../../../assets/icons/PasswordInvisible.svg"
+  message = '';
 
   constructor(private formBuilder: FormBuilder) {
     this.createForm()
@@ -23,8 +26,37 @@ export class ChangePasswordComponent {
   }
 
   changePassword() {
+    if (this.formChangePassWord.valid) {
+      const currentPassword = this.formChangePassWord.value.currentPassword;
+      const newPassword = this.formChangePassWord.value.newPassword;
+      const confirmPassword = this.formChangePassWord.value.confirmPassword;
 
-    // Lógica de troca de senha
-    return
+      if (newPassword === confirmPassword) {
+        // Perform password change logic
+        // ...
+
+        // Display success message
+        this.message = 'Password changed successfully';
+
+        // Reset the form
+        this.formChangePassWord.reset();
+      } else {
+        this.message = 'New password and confirm password do not match';
+      }
+    } else {
+      this.message = 'Please fill in all required fields';
+    }
+  }
+
+
+  showPassword() {
+    if (this.passwordType == "password") {
+      this.passwordType = "text"
+      this.showIconPath = "../../../assets/icons/PasswordVisible.svg"
+    }
+    else {
+      this.passwordType = "password"
+      this.showIconPath = "../../../assets/icons/PasswordInvisible.svg"
+    }
   }
 }
