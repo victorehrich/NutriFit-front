@@ -1,0 +1,40 @@
+<div class="diet-container grid-body">
+    <app-sidebar></app-sidebar>
+    <div class="content flex column" style="justify-content: flex-start;align-items: flex-start;margin: 16px;">
+        <div class="holder-content" style="width: 100%;">
+            <app-loader [condition]="isLoading"></app-loader>
+            <div *ngIf="showEmptyScreen">Ops, parece que não existe nenhuma dieta cadastrada</div>
+            <div *ngIf="!showEmptyScreen">
+                <div class="active-diet" style="width: calc(22% + 16px);">
+                    <h1>Dieta Ativa</h1>
+                    <mat-card style="background-color: var(--default-orange); cursor: pointer;" (click)="goToDiet(currentDiet!)">
+                        <mat-card-header>
+                            <mat-card-title>{{currentDiet?.dietName ? currentDiet!.dietName: "Dieta padrão"}}</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p>Criada em: {{currentDiet!.createdOn}}</p>
+                            <p>Objetivo: {{currentDiet?.dietGoal ? currentDiet?.dietGoal : '-'}}</p>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div class="old-diet" >
+                    <h1>Dietas Passadas</h1>
+                    <div style="display: grid;grid-template-columns: 23% 23% 23% 23%;grid-gap: 16px;">
+                        <div *ngFor="let diet of diets, let i = index">
+                            <mat-card style="background-color: var(--default-green); cursor: pointer;" (click)="goToDiet(diet)">
+                                <mat-card-header>
+                                    <mat-card-title>{{diet?.dietName ? diet!.dietName: "Dieta " + (i+1)}}</mat-card-title>
+                                </mat-card-header>
+                                <mat-card-content>
+                                    <p>Criada em: {{diet!.createdOn}}</p>
+                                    <p>Objetivo: {{diet?.dietGoal ? diet!.dietGoal : '-'}}</p>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

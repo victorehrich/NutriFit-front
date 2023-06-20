@@ -30,7 +30,7 @@ export class SideLoginComponent {
   createForm(){
     this.form = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required,Validators.email])],
-      password: ['', Validators.required],
+      password: ['', Validators.compose([Validators.required])],
     });
   }
   showPassword(){
@@ -53,7 +53,7 @@ export class SideLoginComponent {
         next:(token:LoginResponseInterface)=>{
           localStorage.removeItem("sessionToken")
           localStorage.removeItem("user")
-          localStorage.setItem("sessionToken",JSON.stringify(token.token))
+          localStorage.setItem("sessionToken",token.token)
           let {password ,... user} = token.user
           localStorage.setItem("user",JSON.stringify(user))
           this.redirectToHome.emit(true);

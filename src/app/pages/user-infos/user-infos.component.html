@@ -1,0 +1,41 @@
+<div class="user-container grid-body">
+    <app-sidebar></app-sidebar>
+    <div class="content flex column">
+        <app-loader [condition]="isLoading"></app-loader>
+        <div *ngIf="!isLoading" class="holder-green">
+            <div class="holder-content">
+                <div class="flex" style="justify-content: space-between;align-items: center;">
+                    <div class="img-label-holder flex" style="align-items: center;">
+                        <img src="../../../assets/img/login-background.png" class="rounded">
+                        <label class="user-name">{{user.name}}</label>
+                    </div>
+                    <div>
+                        <div class="default-send-button flex">
+                            <button (click)="navigateToEditUser()" style="color: black;">Editar</button>
+                        </div>
+                        <div class="flex links" style="justify-content: flex-end;">
+                            <a routerLink="/trocar-senha">Trocar senha</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="holder-white">
+                    <div class="holder-content" style="margin-top: 16px;">
+                        <p>Email:{{user.email}}</p>
+                        <hr class="sidebar-hr">
+                        <p>Idade:{{user.age}}</p>
+                        <hr class="sidebar-hr">
+                        <p>Peso:{{user.weigth}} Kg</p>
+                        <hr class="sidebar-hr">
+                        <p>Altura:{{user.heigth | heigthPipe:"Cm":"M"}}</p>
+                        <hr class="sidebar-hr">
+                        <p>Biotipo:{{user.biotypeName ? user.biotypeName : 'Não informado'}}</p>
+                        <hr class="sidebar-hr">
+                        <p>Sexo:{{user.sexName}}</p>
+                        <hr class="sidebar-hr">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

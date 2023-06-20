@@ -1,0 +1,14 @@
+<div class="erro-container flex" style="align-items: center;justify-content: center;">
+    <img src="../../../assets/img/error-404.svg" alt="404-not-found">
+    <div>
+        <h1>ERRO 404</h1>
+        <h3>Página ou recurso não encontrado.</h3>
+        <p class="erro-message">Ops, parece que a página ou recurso que você estava buscando não pode ser encontrado.</p>
+        <default-button
+        (click)="goBack()"
+        [textColor]="'black'"
+        [buttonColor]="'var(--default-white)'"
+        [buttonLabel]="this.textButton"
+        ></default-button>
+    </div>
+</div>

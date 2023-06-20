@@ -9,22 +9,21 @@ import { UserInterface } from 'src/app/interfaces/user/user.interface';
 })
 export class SidebarComponent {
   baseIconPath = "../../../assets/icons/"
-  user:UserInterface = JSON.parse(localStorage.getItem("user") as string)
   itensSidebar = [
     {
       label: 'Minhas informações',
       icon: 'Person',
-      path: '/minhas-informacoes/'+ this.user.id
+      path: '/informacoes-do-usuario/'
     },
     {
       label: 'Minhas dietas',
       icon: 'Apple',
-      path: '/minhas-dietas/'+ this.user.id
+      path: '/minhas-dietas/'
     },
     {
       label: 'Meus Treinos',
       icon: 'Weigth',
-      path: '/meus-treinos/'+ this.user.id
+      path: '/meus-treinos/'
     },
   ];
   
@@ -32,8 +31,7 @@ export class SidebarComponent {
 
   }
   logout(){
-    localStorage.removeItem("token")
-    localStorage.removeItem("user")
+    localStorage.clear()
     this.router.navigate(["/"])
   }
 }

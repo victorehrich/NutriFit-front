@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 import { UserInterface } from "../interfaces/user/user.interface";
 import { State } from "../interfaces/responses/state.interface";
 import { UserCreateInterface } from "../interfaces/user/user.create.interface";
+import { UserUpdateInterface } from "../interfaces/user/user.update.interface";
 
 @Injectable({
     providedIn: 'root'
@@ -14,5 +15,11 @@ export class UserService{
     constructor(private httpService: HttpClient) {}
     createUser(user:UserCreateInterface): Observable<State<UserInterface>>{
         return this.httpService.post<State<UserInterface>>(`${this.url}`,user)
+    }
+    getUser(): Observable<UserInterface>{
+        return this.httpService.get<UserInterface>(`${this.url}`)
+    }
+    updateUser(user:UserUpdateInterface): Observable<State<UserInterface>>{
+        return this.httpService.put<State<UserInterface>>(`${this.url}`,user)
     }
 }

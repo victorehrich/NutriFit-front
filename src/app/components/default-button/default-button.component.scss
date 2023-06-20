@@ -1,0 +1,17 @@
+.default-button-container{
+    border-radius: 12px;
+    max-width: 300px;
+    align-items:center;
+    img{
+        padding: 16px 4px 16px 16px;
+        max-width: 24px;
+        max-height: 24px;
+    }
+    button{
+        border:none;
+        background-color: transparent;
+        height: 64px;
+        width: 100%;
+        font-size: 16px;
+    }
+}
