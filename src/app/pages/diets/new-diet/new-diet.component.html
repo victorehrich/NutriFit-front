@@ -1,0 +1,112 @@
+<div class="diet-container grid-body">
+    <app-sidebar></app-sidebar>
+    <div class="content flex column" style="justify-content: flex-start;align-items: flex-start;margin: 16px;">
+        <div class="holder-content" style="width: 100%;">
+            <app-loader [condition]="isLoading"></app-loader>
+            <div *ngIf="!isLoading">
+                <form [formGroup]="form" class="holder-green">
+                    <div class="form-revision grid column-2">
+                        <div>
+                            <h3>Revise as suas informações:</h3>
+                            <div class="holder-white">
+                                <div class="grid column-2">
+                                    <div class="form-input flex column" style="align-items: flex-start;">
+                                        <label for="email">Email</label>
+                                        <input type="email" placeholder="Email" formControlName="email">
+                                    </div>
+                                    <div class="form-input flex column" style="align-items: flex-start;">
+                                        <label for="email">Nome</label>
+                                        <input type="text" placeholder="Nome" formControlName="name">
+                                    </div>
+                                    <div class="form-input flex column" style="align-items: flex-start;">
+                                        <label for="email">Altura</label>
+                                        <div>
+                                            <input type="number" placeholder="Altura (cm)" formControlName="heigth">
+                                            <label style="margin-left: 4px;">Cm</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-input flex column" style="align-items: flex-start;">
+                                        <label for="email">Peso</label>
+                                        <div>
+                                            <input type="number" placeholder="Altura (cm)" formControlName="weigth">
+                                            <label style="margin-left: 4px;">Kg</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-input flex column" style="align-items: flex-start;">
+                                        <label for="biotypeId">Biotipo</label>
+                                        <select formControlName="biotypeId">
+                                            <option [ngValue]=0 disabled>Biotipo</option>
+                                            <option [ngValue]=1>Não sei informar</option>
+                                            <option [ngValue]=2>Ectomorfo</option>
+                                            <option [ngValue]=3>Mesomorfo</option>
+                                            <option [ngValue]=4>Endomorfo</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-input flex column" style="align-items: flex-start;">
+                                        <label for="sexId">Sexo</label>
+                                        <select formControlName="sexId">
+                                            <option [ngValue]=0 disabled>Sexo</option>
+                                            <option [ngValue]=1>Masculino</option>
+                                            <option [ngValue]=2>Feminino</option>
+                                            <option [ngValue]=3>Outros</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3>Preencha as informações adicionais da dieta:</h3>
+                            <div class="holder-white">
+                                <div class="form-input flex column" style="align-items: flex-start;">
+                                    <label for="email">Nome da dieta</label>
+                                    <input type="text" placeholder="Nome da dieta" formControlName="dietName">
+                                </div>
+                                    <div class="form-input flex column" style="align-items: flex-start;">
+                                        <label for="goals">Objetivos</label>
+                                        <textarea formControlName="goals" placeholder="Objetivos" rows="4" cols="50"></textarea>
+                                    </div>
+                                    <div class="form-input flex column" style="align-items: flex-start;">
+                                        <label>Alergias</label>
+                                        <mat-form-field class="example-chip-list">
+                                            <mat-label>Alergias</mat-label>
+                                            <mat-chip-grid #chipGrid aria-label="Digite as alergias">
+                                              <mat-chip-row *ngFor="let allergie of allergies"
+                                                            (removed)="remove(allergie)"
+                                                           >
+                                                    {{allergie}}
+                                                <button matChipRemove [attr.aria-label]="'remove ' + allergie">
+                                                  <mat-icon>cancel</mat-icon>
+                                                </button>
+                                              </mat-chip-row>
+                                              <input placeholder="Nova alergia..."
+                                                     [matChipInputFor]="chipGrid"
+                                                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                     [matChipInputAddOnBlur]="addOnBlur"
+                                                     (matChipInputTokenEnd)="add($event)"
+                                                     (keyup)="preventNumbers($event)"/>
+                                            </mat-chip-grid>
+                                          </mat-form-field>
+                                    </div>
+                                
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="margin-top: 24px; max-width: 300px;">
+                        <default-button
+                        (click)="sendForm()"
+                        [textColor]="'black'"
+                        [buttonColor]="'var(--default-white)'"
+                        [buttonLabel]="'Cadastrar nova dieta'"
+                        class="default-button-not-empty-screen"
+                        [disabled]="form.invalid && this.loadingButton"
+                        [condition]="loadingButton"
+                    ></default-button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
