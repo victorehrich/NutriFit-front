@@ -1,7 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DietCreateInterface } from 'src/app/interfaces/diet/diet.create.interface';
 import { DietInterface } from 'src/app/interfaces/diet/diet.interface';
+import { State } from 'src/app/interfaces/responses/state.interface';
 import { DietService } from 'src/app/services/diet.service';
 
 @Component({
@@ -33,6 +35,7 @@ export class DietsComponent implements OnInit {
         }
       },
       error: (err: HttpErrorResponse) => {
+        console.error(err)
         this.router.navigate(['pagina-de-erro']);
       },
       complete: () => {
@@ -41,16 +44,28 @@ export class DietsComponent implements OnInit {
     });
   }
   goToDiet(diet: DietInterface) {
-    // this.dietService.getDiet(diet.mondayScheduleId).subscribe({
-    //   next: (response: any) => {
-    //     console.log(response)
-    //   },
-    //   error: (err: HttpErrorResponse) => {
-    //     this.router.navigate(['pagina-de-erro']);
-    //   },
-    //   complete: () => {
-    //     this.isLoading = false;
-    //   },
-    // });
+    this.router.navigate(['minhas-dietas',diet.dietId])
+  }
+  updateDietStatus(dietId:number){
+    this.isLoading = true;
+    let result = window.confirm("Tem certeza que deseja alterar a dieta padrão?")
+    if(!result) return
+    this.dietService.updateDietStatus(dietId).subscribe({
+      next: (response: State<DietCreateInterface>) => {
+        this.diets = []
+        this.getDiets()
+      },
+      error: (err: HttpErrorResponse) => {
+        console.error(err)
+        this.router.navigate(['pagina-de-erro']);
+      },
+      complete: () => {
+        this.isLoading = false;
+      },
+    });
+  }
+
+  goToNewDiet(){
+    this.router.navigate(['nova-dieta'])
   }
 }

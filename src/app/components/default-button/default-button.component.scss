@@ -2,6 +2,7 @@
     border-radius: 12px;
     max-width: 300px;
     align-items:center;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     img{
         padding: 16px 4px 16px 16px;
         max-width: 24px;
@@ -13,5 +14,11 @@
         height: 64px;
         width: 100%;
         font-size: 16px;
+    }
+}
+.default-button-container:has(button:disabled){
+    background-color: var(--default-light-gray)!important;
+    button{
+        color: #343434af!important;
     }
 }

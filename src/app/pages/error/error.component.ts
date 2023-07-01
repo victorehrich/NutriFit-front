@@ -18,10 +18,10 @@ export class ErrorComponent {
     return this.authService.isAuthenticated() && this.authService.getToken() != "";
   }
   goBack() {
-    if (this.isAuthenticated()) this.router.navigate(['/home']);
+    if (this.isAuthenticated()) this.router.navigate(['']);
     else {
       localStorage.clear();
-      this.router.navigate(['/']);
+      this.router.navigate(['/login']);
     }
   }
 }
