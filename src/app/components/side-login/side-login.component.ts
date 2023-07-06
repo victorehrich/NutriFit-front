@@ -52,10 +52,10 @@ export class SideLoginComponent {
       this.loginService.login(login).subscribe({
         next:(token:LoginResponseInterface)=>{
           localStorage.removeItem("sessionToken")
-          localStorage.removeItem("user")
+          // localStorage.removeItem("user")
           localStorage.setItem("sessionToken",token.token)
-          let {password ,... user} = token.user
-          localStorage.setItem("user",JSON.stringify(user))
+          // let {password ,... user} = token.user
+          // localStorage.setItem("user",JSON.stringify(user))
           this.redirectToHome.emit(true);
         },
         error:(err:HttpErrorResponse)=>{

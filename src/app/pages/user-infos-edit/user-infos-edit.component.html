@@ -6,7 +6,19 @@
             <div class="holder-content">
                 <div class="flex" style="justify-content: space-between;align-items: center;">
                     <div class="img-label-holder flex" style="align-items: center;">
-                        <img src="../../../assets/img/login-background.png" class="rounded">
+                        <div class="flex column">
+                            <img [src]="imageUrl ? imageUrl :'../../../assets/img/login-background.png'" class="rounded">
+                            <div class="text-center">
+                                <input class="form-control" type="file" 
+                                        (change)="onChange($event)">
+                            
+                                <button (click)="onUpload()" 
+                                    class="btn btn-success">
+                                    Upload
+                                </button>
+                            </div>
+                        </div>
+                        
                         <label class="user-name">{{user.name}}</label>
                     </div>
                     <div>

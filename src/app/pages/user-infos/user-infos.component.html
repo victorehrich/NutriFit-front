@@ -6,7 +6,7 @@
             <div class="holder-content">
                 <div class="flex" style="justify-content: space-between;align-items: center;">
                     <div class="img-label-holder flex" style="align-items: center;">
-                        <img src="../../../assets/img/login-background.png" class="rounded">
+                        <img [src]="this.imageUrl ? this.imageUrl : '../../../assets/img/login-background.png'" class="rounded">
                         <label class="user-name">{{user.name}}</label>
                     </div>
                     <div>

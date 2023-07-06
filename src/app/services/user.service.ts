@@ -22,4 +22,15 @@ export class UserService{
     updateUser(user:UserUpdateInterface): Observable<State<UserInterface>>{
         return this.httpService.put<State<UserInterface>>(`${this.url}`,user)
     }
+    uploadImage(file:File, name:string): Observable<State<null>>{
+
+        const formData = new FormData(); 
+        
+        formData.append("userImage", file, name);
+        return this.httpService.post<State<null>>(`${this.url}/Image`,formData)
+    }
+    getImage(name:string): Observable<any>{
+        return this.httpService.get<any>(`${this.url}/Image/${name}`)
+    }
+
 }

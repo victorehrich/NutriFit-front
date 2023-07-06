@@ -1,5 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { UserInterface } from 'src/app/interfaces/user/user.interface';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +11,10 @@ import { UserInterface } from 'src/app/interfaces/user/user.interface';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  user:UserInterface = JSON.parse(localStorage.getItem("user") as string)
-  date = new Date().toLocaleDateString()
+  user!: UserInterface
+  date = new Date().toLocaleDateString();
+  isLoading: boolean = false;
+  imageUrl?: SafeUrl;
   dietInfos = {
     label: 'Minha Próxima refeição é:',
     sublabel: '12:00 - Almoço',
@@ -31,4 +37,44 @@ export class HomeComponent {
       'Rosca francesa (3x12)',
     ],
   };
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private sanitizer: DomSanitizer
+  ) {}
+  ngOnInit(): void {
+    this.getCurrentUserInfos();
+  }
+  getCurrentUserInfos(): void {
+    this.isLoading = true;
+    this.userService.getUser().subscribe({
+      next: (response: UserInterface) => {
+        this.user = response;
+        this.getImage(this.user.name);
+      },
+      error: (err: HttpErrorResponse) => {
+        console.error(err);
+        window.alert(err.message);
+        this.isLoading = false;
+      },
+    });
+  }
+  getImage(name: string): void {
+    this.isLoading = true;
+    this.userService.getImage(name).subscribe({
+      next: (response: any) => {
+        let base64data = 'data:image/jpeg;base64,' + response.file;
+        this.imageUrl = this.sanitizer.bypassSecurityTrustUrl(
+          base64data!.toString()
+        );
+      },
+      error: (err: HttpErrorResponse) => {
+        console.error(err);
+        window.alert(err.message);
+      },
+      complete: () => {
+        this.isLoading = false;
+      },
+    });
+  }
 }

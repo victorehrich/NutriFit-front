@@ -1,21 +1,19 @@
 <div class="home-container grid-body">
     <app-sidebar></app-sidebar>
     <div class="content">
-        <div class="flex align-center" style="margin-bottom: 24px;">
-            <img src="../../../assets/img/login-background.png" class="rounded">
-            <label class="welcome-message">
-                Bem vindo, {{user.name}} - {{date}}
-            </label>
+        <app-loader [condition]="isLoading"></app-loader>
+        <div *ngIf="!isLoading" class="holder-green">
+            <div class="flex align-center" style="margin-bottom: 24px;">
+                <img [src]="imageUrl? imageUrl : '../../../assets/img/login-background.png'" class="rounded">
+                <label class="welcome-message">
+                    Bem vindo, {{user.name}} - {{date}}
+                </label>
+            </div>
+            <app-home-displayer [title]="dietInfos.label" [subtitle]="dietInfos.sublabel" [itens]="dietInfos.body">
+            </app-home-displayer>
+            <app-home-displayer [title]="exerciseInfos.label" [subtitle]="exerciseInfos.sublabel"
+                [itens]="exerciseInfos.body">
+            </app-home-displayer>
         </div>
-        <app-home-displayer 
-            [title]="dietInfos.label" 
-            [subtitle]="dietInfos.sublabel"
-            [itens]="dietInfos.body">
-        </app-home-displayer>
-        <app-home-displayer 
-        [title]="exerciseInfos.label" 
-        [subtitle]="exerciseInfos.sublabel"
-        [itens]="exerciseInfos.body">
-    </app-home-displayer>
     </div>
 </div>
