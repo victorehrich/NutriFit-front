@@ -1,0 +1,72 @@
+<div class="signup-container flex column" >
+    <div class="form flex column">
+        <label class="logo">NutriFit</label>
+        <label class="signup-txt">Esqueci a senha</label>
+        <div id="inputs" [formGroup]="form">
+            <div class="grid column-2">
+                <div class="input-icon flex">
+                    <img src="../../../assets/icons/Email.svg">
+                    <input type="text" placeholder="Nome" formControlName="name">
+                </div>
+                <div class="input-icon flex">
+                    <img src="../../../assets/icons/Email.svg">
+                    <input type="email" placeholder="Email" formControlName="email">
+                </div>
+            </div>
+            <div class="grid column-3">
+                <div class="input-icon flex">
+                    <img src="../../../assets/icons/Email.svg">
+                    <input type="number" placeholder="Altura (cm)" formControlName="heigth">
+                </div>
+                <div class="input-icon flex">
+                    <img src="../../../assets/icons/Email.svg">
+                    <input type="number" placeholder="peso (Kg)" formControlName="weigth">
+                </div>
+                <div class="input-icon flex">
+                    <select formControlName="biotypeId">
+                        <option [ngValue]=0 disabled>Biotipo</option>
+                        <option [ngValue]=1>Não sei informar</option>
+                        <option [ngValue]=2>Ectomorfo</option>
+                        <option [ngValue]=3>Mesomorfo</option>
+                        <option [ngValue]=4>Endomorfo</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid column-2">
+                <div class="input-icon flex">
+                    <img src="../../../assets/icons/Email.svg">
+                    <input type="number" placeholder="Idade" formControlName="age">
+                </div>
+                <div class="input-icon flex">
+                    <select formControlName="sexId">
+                        <option [ngValue]=0 disabled>Sexo</option>
+                        <option [ngValue]=1>Masculino</option>
+                        <option [ngValue]=2>Feminino</option>
+                        <option [ngValue]=3>Outros</option>
+                      </select>
+                </div>
+            </div>
+            <div class="grid column-2">
+                <div class="input-icon flex">
+                    <img src="../../../assets/icons/PasswordLock.svg">
+                    <input [type]="passwordType" placeholder="Senha" formControlName="password">
+                    <button (click)="showPassword('password')"><img id="eye-password" [src]="showIconPath"></button>
+                </div>
+                <div class="input-icon flex">
+                    <img src="../../../assets/icons/PasswordLock.svg">
+                    <input [type]="confirmPasswordType" placeholder="Confirmar senha" formControlName="confirmPassword">
+                    <button (click)="showPassword('confirmPassword')"><img id="eye-password" [src]="confirmShowIconPath"></button>
+                </div>
+            </div>
+            <div *ngIf="(form.controls['confirmPassword'].dirty || form.controls['confirmPassword'].touched)" class="alert">
+                <div *ngIf="form.controls['confirmPassword'].value != form.controls['password'].value" class="form-error">
+                    <p>*Sua senha precisa ser igual a digitada</p>
+              </div>
+            </div>
+        </div>
+        <div class="default-send-button">
+            <button class="button-green" (click)="createUser()" [disabled]="!releaseButton()">Enviar</button>
+        </div>
+        <div *ngIf="erroMsg" class="form-error"><p>*{{erroMsg}}</p></div>
+    </div>
+</div>

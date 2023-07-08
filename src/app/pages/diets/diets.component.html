@@ -1,0 +1,61 @@
+<div class="diet-container grid-body">
+    <app-sidebar></app-sidebar>
+    <div class="content flex column" style="justify-content: flex-start;align-items: flex-start;margin: 16px;">
+        <div class="holder-content" style="width: 100%;">
+            <app-loader [condition]="isLoading"></app-loader>
+            <div *ngIf="!isLoading">
+                <div *ngIf="showEmptyScreen" class="not-found-diet flex" style="align-items: center;justify-content: center;">
+                    <img src="../../../assets/img/not-found.svg" alt="not-found">
+                    <div>
+                        <h1>Ops, parece que não existe nenhuma dieta cadastrada</h1>
+                        <default-button
+                            (click)="goToNewDiet()"
+                            [textColor]="'var(--default-white)'"
+                            [buttonColor]="'var(--default-green)'"
+                            [buttonLabel]="'Cadastrar nova dieta'"
+                        ></default-button>
+                    </div>
+                </div>
+                <div *ngIf="!showEmptyScreen">
+                    <default-button
+                    (click)="goToNewDiet()"
+                    [textColor]="'var(--default-white)'"
+                    [buttonColor]="'var(--default-green)'"
+                    [buttonLabel]="'Cadastrar nova dieta'"
+                    class="default-button-not-empty-screen"
+                ></default-button>
+                    <div class="active-diet" style="width: calc(22% + 16px);">
+                        <h1>Dieta Ativa</h1>
+                        <mat-card style="background-color: var(--default-orange); cursor: pointer;" (click)="goToDiet(currentDiet!)">
+                            <mat-card-header style="justify-content: space-between;">
+                                <mat-card-title>{{currentDiet?.dietName ? currentDiet!.dietName: "Dieta padrão"}}</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <p>Criada em: {{currentDiet!.createdOn | date:'full':'':'pt-BR'}}</p>
+                                <p>Objetivo: {{currentDiet?.dietGoal ? currentDiet?.dietGoal : '-'}}</p>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                    <div class="old-diet" >
+                        <h1>Dietas Passadas</h1>
+                        <div style="display: grid;grid-template-columns: 23% 23% 23% 23%;grid-gap: 16px;">
+                            <div *ngFor="let diet of diets, let i = index">
+                                <mat-card style="background-color: var(--default-green); cursor: pointer;" (click)="goToDiet(diet)">
+                                    <mat-card-header style="justify-content: space-between;">
+                                        <mat-card-title>{{diet?.dietName ? diet!.dietName: "Dieta " + (i+1)}}</mat-card-title>
+                                        <button (click)="updateDietStatus(diet!.dietId);$event.stopPropagation()" class="flex column" style="background-color: transparent; border: none;"><img src="../../../assets/icons/CheckBox.svg" alt="Delete">Tornar ativo</button>
+                                    </mat-card-header>
+                                    <mat-card-content>
+                                        <p>Criada em: {{currentDiet!.createdOn | date:'full':'':'pt-BR'}}</p>
+                                        <p>Objetivo: {{diet?.dietGoal ? diet!.dietGoal : '-'}}</p>
+                                    </mat-card-content>
+                                </mat-card>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

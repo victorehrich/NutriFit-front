@@ -1,0 +1,70 @@
+<!-- <mat-card [ngStyle]="{'background-color': returnVarColor(cardColor)}">
+    <mat-card-header>
+        <h1>{{weekDay}}:</h1>
+    </mat-card-header>
+    <mat-card-content>
+        <p [ngStyle]="{'color':  returnVarColor(textColor)}">Criada em: {{diet!.createdOn}}</p>
+        <p [ngStyle]="{'color':  returnVarColor(textColor)}">Objetivo: {{diet?.dietGoal ? diet!.dietGoal : '-'}}</p>
+        <hr>
+        <mat-card-subtitle [ngStyle]="{'color':  returnVarColor(textColor)}">Manhã: {{scheduleInfos!.morningMeal.startTime}} - {{scheduleInfos!.morningMeal.endTime}}</mat-card-subtitle>
+        <mat-card-title>
+            <h3>Pratos:</h3>
+        </mat-card-title>
+        <div *ngFor="let dish of scheduleInfos!.morningMeal.dish, let i = index">
+            <p [ngStyle]="{'color': returnVarColor(textColor)}">{{(i+1)}} : {{dish.dishName}} {{dish.dishQuantity}} de {{dish.dishTime}}</p>
+        </div>
+        <hr>
+        <mat-card-subtitle [ngStyle]="{'color': returnVarColor(textColor)}">Tarde {{scheduleInfos!.afternoonMeal.startTime}} - {{scheduleInfos!.afternoonMeal.endTime}}</mat-card-subtitle>
+        <mat-card-title>
+            <h3>Pratos:</h3>
+        </mat-card-title>
+        <div *ngFor="let dish of scheduleInfos!.afternoonMeal.dish, let i = index">
+            <p [ngStyle]="{'color': returnVarColor(textColor)}">{{(i+1)}} : {{dish.dishName}} {{dish.dishQuantity}} de {{dish.dishTime}}</p>
+        </div>
+        <hr>
+        <mat-card-subtitle [ngStyle]="{'color': returnVarColor(textColor)}">Noite {{scheduleInfos!.nightMeal.startTime}} - {{scheduleInfos!.nightMeal.endTime}}</mat-card-subtitle>
+        <mat-card-title>
+            <h3>Pratos:</h3>
+        </mat-card-title>
+        <div *ngFor="let dish of scheduleInfos!.nightMeal.dish, let i = index">
+            <p [ngStyle]="{'color': returnVarColor(textColor)}">{{(i+1)}} : {{dish.dishName}} {{dish.dishQuantity}} de {{dish.dishTime}}</p>
+        </div>
+    </mat-card-content>
+</mat-card> -->
+
+<mat-accordion >
+    <mat-expansion-panel [ngStyle]="{'background-color': returnVarColor(cardColor)}">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{weekDay}}
+        </mat-panel-title>
+        <mat-panel-description>
+            Criada em: {{datedisplay() | date:'fullDate':'':'pt-BR'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>Objetivo: {{diet?.dietGoal ? diet!.dietGoal : '-'}}</p>
+      <hr>
+        <mat-card-subtitle [ngStyle]="{'color':  returnVarColor(textColor)}">Manhã: {{scheduleInfos!.morningMeal.startTime}} - {{scheduleInfos!.morningMeal.endTime}}</mat-card-subtitle>
+        <mat-card-title>
+            <h3>Pratos:</h3>
+        </mat-card-title>
+        <div *ngFor="let dish of scheduleInfos!.morningMeal.dish, let i = index">
+            <p [ngStyle]="{'color': returnVarColor(textColor)}">{{(i+1)}} : {{dish.dishName}} {{dish.dishQuantity}} as {{dish.dishTime}}</p>
+        </div>
+        <hr>
+        <mat-card-subtitle [ngStyle]="{'color': returnVarColor(textColor)}">Tarde {{scheduleInfos!.afternoonMeal.startTime}} - {{scheduleInfos!.afternoonMeal.endTime}}</mat-card-subtitle>
+        <mat-card-title>
+            <h3>Pratos:</h3>
+        </mat-card-title>
+        <div *ngFor="let dish of scheduleInfos!.afternoonMeal.dish, let i = index">
+            <p [ngStyle]="{'color': returnVarColor(textColor)}">{{(i+1)}} : {{dish.dishName}} {{dish.dishQuantity}} as {{dish.dishTime}}</p>
+        </div>
+        <hr>
+        <mat-card-subtitle [ngStyle]="{'color': returnVarColor(textColor)}">Noite {{scheduleInfos!.nightMeal.startTime}} - {{scheduleInfos!.nightMeal.endTime}}</mat-card-subtitle>
+        <mat-card-title>
+            <h3>Pratos:</h3>
+        </mat-card-title>
+        <div *ngFor="let dish of scheduleInfos!.nightMeal.dish, let i = index">
+            <p [ngStyle]="{'color': returnVarColor(textColor)}">{{(i+1)}} : {{dish.dishName}} {{dish.dishQuantity}} as {{dish.dishTime}}</p>
+        </div>
+    </mat-expansion-panel>

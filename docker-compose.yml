@@ -1,12 +1,10 @@
-version: '3.4'
-
+version: "3.8"
 services:
-  nutrifitfront:
-    image: nutrifitfront
+  angular:
     build:
       context: .
-      dockerfile: ./Dockerfile
-    environment:
-      NODE_ENV: production
+      dockerfile: Dockerfile
     ports:
-      - 8081:80
+      - "4200:4200"
+    volumes:
+      - .:/usr/src/app

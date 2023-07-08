@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
     apiKey: 'devKey',
-    apiURL: 'https://localhost:44340',
+    apiURL: '52.91.255.128',
     apiVersion: 'v1'
   };

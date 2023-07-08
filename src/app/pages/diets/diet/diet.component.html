@@ -1,0 +1,36 @@
+<div class="diet-container grid-body">
+    <app-sidebar></app-sidebar>
+    <div class="content flex column" style="justify-content: flex-start;align-items: flex-start;margin: 16px;">
+        <div class="holder-content" style="width: 100%;">
+            <app-loader [condition]="isLoading"></app-loader>
+            <div *ngIf="!isLoading">
+                <div class="old-diet">
+                    <div style="display: grid;grid-template-columns: 30% 30% 30%;grid-gap: 16px;">
+                        <app-diet-schedule-card [weekDay]="'Segunda-Feira'" [diet]="diet"
+                            [scheduleInfos]="dietsInfosToShow?.mondaySchedule">
+                        </app-diet-schedule-card>
+                        <app-diet-schedule-card [weekDay]="'Terça-Feira'" [diet]="diet"
+                            [scheduleInfos]="dietsInfosToShow?.tuesdaySchedule">
+                        </app-diet-schedule-card>
+                        <app-diet-schedule-card [weekDay]="'Quarta-Feira'" [diet]="diet"
+                            [scheduleInfos]="dietsInfosToShow?.wednesdaySchedule">
+                        </app-diet-schedule-card>
+                        <app-diet-schedule-card [weekDay]="'Quinta-Feira'" [diet]="diet"
+                            [scheduleInfos]="dietsInfosToShow?.thursdaySchedule">
+                        </app-diet-schedule-card>
+                        <app-diet-schedule-card [weekDay]="'Sexta-Feira'" [diet]="diet"
+                            [scheduleInfos]="dietsInfosToShow?.fridaySchedule">
+                        </app-diet-schedule-card>
+                        <app-diet-schedule-card [weekDay]="'Sabado'" [diet]="diet"
+                            [scheduleInfos]="dietsInfosToShow?.saturdaySchedule">
+                        </app-diet-schedule-card>
+                        <app-diet-schedule-card [weekDay]="'Domingo'" [diet]="diet"
+                            [scheduleInfos]="dietsInfosToShow?.sundaySchedule">
+                        </app-diet-schedule-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
