@@ -63,10 +63,12 @@ export class HomeComponent {
     this.isLoading = true;
     this.userService.getImage(name).subscribe({
       next: (response: any) => {
-        let base64data = 'data:image/jpeg;base64,' + response.file;
-        this.imageUrl = this.sanitizer.bypassSecurityTrustUrl(
-          base64data!.toString()
-        );
+        if(response.file?.length > 0){
+          let base64data = 'data:image/jpeg;base64,' + response.file;
+          this.imageUrl = this.sanitizer.bypassSecurityTrustUrl(
+            base64data!.toString()
+          );
+        }
       },
       error: (err: HttpErrorResponse) => {
         console.error(err);
