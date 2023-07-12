@@ -28,4 +28,7 @@ export class DietService{
     updateDietStatus(dietId:number):Observable<State<DietCreateInterface>>{
         return this.httpService.patch<State<DietCreateInterface>>(`${this.url}`,dietId)
     }
+    getTodayDiet():Observable<DietScheduleInterface>{
+        return this.httpService.get<DietScheduleInterface>(`${this.url}/todayDiet`)
+    }
 }
