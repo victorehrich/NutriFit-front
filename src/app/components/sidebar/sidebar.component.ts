@@ -20,11 +20,11 @@ export class SidebarComponent {
       icon: 'Apple',
       path: '/minhas-dietas/'
     },
-    {
-      label: 'Meus Treinos',
-      icon: 'Weigth',
-      path: '/meus-treinos/'
-    },
+    // {
+    //   label: 'Meus Treinos',
+    //   icon: 'Weigth',
+    //   path: '/meus-treinos/'
+    // },
   ];
   
   constructor(private router:Router){
